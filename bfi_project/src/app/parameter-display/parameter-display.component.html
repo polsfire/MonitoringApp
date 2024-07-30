@@ -1,0 +1,10 @@
+<div *ngFor="let param of parameterValues | keyvalue">
+  <h3>{{param.key}}</h3>
+  <ul>
+    <li *ngFor="let value of param.value; let i = index">
+      <input [(ngModel)]="parameterValues[param.key][i]" />
+    </li>
+  </ul>
+  <button (click)="addValue(param.key)">Add Value</button>
+</div>
+<button (click)="sendParameterValues()">Send</button>

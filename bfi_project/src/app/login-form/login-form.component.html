@@ -1,0 +1,98 @@
+<div class="box">
+<section class="h-100 gradient-form" [ngClass]="{'login': !isRegistering, 'register': isRegistering}">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black shadow-dark">
+          <div class="row g-0">
+
+
+            <!-- Left Column with Login and Register Forms -->
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <img src="https://bfigroupe.com/wp-content/uploads/2021/02/bfi_logo_2021.svg" style="width: 185px;" alt="logo">
+                  <h4 class="mt-1 mb-5 pb-1"></h4>
+                </div>
+                <!-- Login Form -->
+                <form *ngIf="!isRegistering" (ngSubmit)="onSubmitLogin()" #loginForm="ngForm" class="form-container">
+                  <p class="form-title">Please login to your account</p>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Email address" [(ngModel)]="LoginDto.email" name="email" required>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="password">Password</label>
+                    <input [(ngModel)]="LoginDto.password" name="password" type="password" id="password" class="form-control" required>
+                  </div>
+
+                  <div class="text-center pt-1 mb-4">
+                    <button class="btn btn-custom btn-block gradient-custom-2" type="submit">Log in</button>
+                  </div>
+
+                  <div class="text-center">
+                    <span class="text-muted me-2">Forgot password?</span>
+                    <span class="bar"></span>
+                    <button type="button" class="btn btn-link text-muted" (click)="switchToRegister()">Create new account</button>
+                  </div>
+                </form>
+                <!-- Registration Form -->
+                <form *ngIf="isRegistering" (ngSubmit)="onSubmitRegister()" #registerForm="ngForm" class="form-container">
+                  <p class="form-title">Create a new account</p>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="username">Username</label>
+                    <input type="text" id="username" class="form-control" placeholder="Username" [(ngModel)]="signupDto.username" name="username" required>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="firstname">First Name</label>
+                    <input type="text" id="firstname" class="form-control" placeholder="First Name" [(ngModel)]="signupDto.firstname" name="firstname" required>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="lastname">Last Name</label>
+                    <input type="text" id="lastname" class="form-control" placeholder="Last Name" [(ngModel)]="signupDto.Lastname" name="lastname" required>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Email" [(ngModel)]="signupDto.email" name="email" required>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="password">Password</label>
+                    <input [(ngModel)]="signupDto.password" name="password" type="password" id="password" class="form-control" required>
+                  </div>
+
+                  <div class="text-center pt-1 mb-5">
+                    <button class="btn btn-custom btn-block gradient-custom-2" type="submit">Register</button>
+                  </div>
+
+                  <div class="text-center">
+                    <p class="text-muted mb-0">Already have an account? <a href="#" (click)="switchToLogin()">Log in</a></p>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            
+            <!-- Right Column with Text Content -->
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">We are more than just a company</h4>
+                <p class="small mb-0">We provide comprehensive monitoring solutions for any application. Our platform ensures your applications are running smoothly, securely, and efficiently. With real-time alerts, detailed analytics, and 24/7 support, we empower our clients to focus on their core business activities while we handle the monitoring and maintenance.</p>
+              </div>
+            </div>
+
+    
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+</section>
+</div>

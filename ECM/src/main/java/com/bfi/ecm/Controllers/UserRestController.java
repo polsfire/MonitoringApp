@@ -1,5 +1,6 @@
 package com.bfi.ecm.Controllers;
 
+import com.bfi.ecm.Config.UserAuthProvider;
 import com.bfi.ecm.DTO.CredentialsDto;
 import com.bfi.ecm.DTO.SignupDto;
 import com.bfi.ecm.DTO.UserDto;
@@ -21,10 +22,21 @@ import java.util.Optional;
 public class UserRestController {
     private final IUserService userService;
 private final UserMapper userMapper;
+    private final UserAuthProvider userAuthProvider;
+    @Operation(description = "Login User")
+    @PostMapping("/login")
+    public ResponseEntity<UserDto> login(@RequestBody CredentialsDto credentialsDto) {
+        UserDto user= userService.login(credentialsDto);
+        user.setToken(userAuthProvider.createToken(user));
+        System.out.println("Logged in user: " + user);
+
+        return ResponseEntity.ok(user);
+    }
     @Operation(description = "Add User")
     @PostMapping("/add")
     public ResponseEntity<UserDto> addUser(@RequestBody SignupDto signupDto) {
         UserDto user= userService.register(signupDto);
+        user.setToken(userAuthProvider.createToken(user));
         return  ResponseEntity.created(URI.create("/users/"+user.getId())).body(user);
     }
 
@@ -55,13 +67,6 @@ private final UserMapper userMapper;
         userService.deleteUser(idUser);
     }
 
-    @Operation(description = "Login User")
-    @PostMapping("/login")
-    public ResponseEntity<UserDto> login(@RequestBody CredentialsDto credentialsDto) {
-        UserDto user= userService.login(credentialsDto);
-        System.out.println("Logged in user: " + user);
 
-        return ResponseEntity.ok(user);
-    }
 
 }

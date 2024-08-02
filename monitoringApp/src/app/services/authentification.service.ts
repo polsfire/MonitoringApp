@@ -22,4 +22,14 @@ export class AuthentificationService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(`${this.baseUrl}/users/add`, signupRequest, { headers });
   }
+  getAuthToken():string | null   {
+    return window.localStorage.getItem("auth_token");
+  }
+  setAuthToken(token :string | null):void   {
+    if (token!=null) 
+      window.localStorage.setItem("auth_token",token);
+    else 
+    window.localStorage.removeItem("auth_token");
+
+  }
 }

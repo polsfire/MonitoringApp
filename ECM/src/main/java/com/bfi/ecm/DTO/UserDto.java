@@ -19,7 +19,7 @@ public class UserDto {
     private Long id;
     private String username;
     private String firstname;
-    private String Lastname;
+    private String lastname;
     private String email;
     private String password;
     private String token;

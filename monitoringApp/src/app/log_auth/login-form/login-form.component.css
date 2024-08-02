@@ -1,0 +1,118 @@
+/* Import the custom font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Shared gradient background */
+.gradient-custom-2 {
+  background: linear-gradient(to right, #000000, #FFD700, #FFFFFF);
+  /* Add vendor prefixes for browser compatibility */
+  background: -webkit-linear-gradient(to right, #000000, #FFD700, #FFFFFF);
+  background: -moz-linear-gradient(to right, #000000, #FFD700, #FFFFFF);
+  background: -o-linear-gradient(to right, #000000, #FFD700, #FFFFFF);
+  background: -ms-linear-gradient(to right, #000000, #FFD700, #FFFFFF);
+  /* Fallback for older browsers */
+  background: #000000; /* Fallback color */
+}
+
+ 
+/* Login form specific styles */
+.gradient-form.login {
+  height: 100vh !important; /* Adjust height for full viewport height */
+  /* Add other specific styles as needed */
+}
+
+/* Register form specific styles */
+.gradient-form.register {
+  height: auto; /* Allow height to adjust based on content */
+  /* Add other specific styles as needed */
+}
+
+/* Adjust shadow color */
+.shadow-dark {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Example shadow */
+}
+
+/* Media query adjustments */
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+  /* Adjust other styles as needed for larger screens */
+}
+
+/* Button styling */
+.btn-custom {
+  background-color: #FFD700; /* Gold color */
+  color: #000000; /* Black text */
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: #FFC107; /* Slightly darker gold on hover */
+  color: #000000; /* Black text */
+}
+
+/* Input field styling */
+.form-control {
+  border: 1px solid #FFD700; /* Gold border */
+}
+
+.form-control:focus {
+  border-color: #FFC107; /* Slightly darker gold on focus */
+  box-shadow: none; /* Remove default focus shadow */
+}
+
+/* Label next to input styling */
+.form-outline {
+  display: flex;
+  align-items: center; /* Align label and input to the center vertically */
+  gap: 5px; /* Add spacing between label and input */
+}
+
+.form-outline label {
+  width: 150px; /* Set a fixed width for labels */
+  margin-bottom: 0; /* Remove default bottom margin */
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+  font-weight: 700; /* Bold font weight */
+  color: #000000; /* Custom color */
+}
+
+.form-outline input {
+  flex-grow: 1; /* Allow input to grow and fill available space */
+}
+
+.form-label {
+  margin-bottom: 0; /* Remove bottom margin */
+}
+
+/* Container styling */
+.form-container {
+    padding-left: 0; /* Ensure there's no padding on the left of the container */
+    margin-left: 0; /* Ensure there's no margin on the left of the container */
+  }
+  
+  /* Title styling */
+  .form-title {
+    font-family: 'Roboto', sans-serif; /* Apply custom font */
+    font-weight: 700; /* Bold font weight */
+    font-size: 1.5rem; /* Increase font size */
+    color: #000000; /* Custom color */
+    margin-bottom: 1rem; /* Add bottom margin */
+    text-align: left; /* Align text to the left */
+    margin-left: -7%; /* Push the title 10% to the left */
+    padding-left: 0; /* Remove any default left padding */
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  

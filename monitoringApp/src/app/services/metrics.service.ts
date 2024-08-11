@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
+import { AxiosService } from './axios.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,11 @@ export class MetricsService {
   
   baseUrl = 'http://localhost:8089/api'; // Replace with your actual backend base URL
 
-  constructor(private http: HttpClient) {}
+  constructor(private axiosService: AxiosService) {}
 
-
+  /*sendParameterValuesToBackend(): Observable<any> {
+    return this.http.post(`${this.baseUrl}/Metric/send-parameters`, this.parameterValues);
+  }*/
 
   getParameters(): string[] {
     return Object.keys(this.parameterValues);
@@ -47,8 +50,12 @@ export class MetricsService {
 
   // backend---------communication
   sendParameterValuesToBackend(): Observable<any> {
-    return this.http.post(`${this.baseUrl}/Metric/send-parameters`, this.parameterValues);
+    return from(
+      this.axiosService.request('POST', `${this.baseUrl}/Metric/send-parameters`, this.parameterValues)
+        .then(response => response.data)  // Extract the data from the response
+    );
   }
+  
 
   // Function to get the parameter list from the backend
   /*getParameterListFromBackend(): Observable<string[]> {

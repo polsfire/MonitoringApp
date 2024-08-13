@@ -13,17 +13,17 @@ export class AxiosService {
 
   }
   request(method:string,url:string,data:any):Promise<any>{
-    let headers = {};
+    /*let headers = {};
 
     if (this.getAuthToken!=null) {
-      headers={"Authorisation":"Brear"+this.getAuthToken()}
-    }
+      headers={"Authorisation":"Bearer"+this.getAuthToken()}
+    }*/
     return axios(
       {
         method:method,
         url:url,
         data:data,
-        headers:headers
+       // headers:headers
       }
     )
   }

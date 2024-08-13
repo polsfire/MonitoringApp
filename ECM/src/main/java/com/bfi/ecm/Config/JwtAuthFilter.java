@@ -26,7 +26,7 @@ private final UserAuthProvider userAuthProvider;
         String header= request.getHeader(HttpHeaders.AUTHORIZATION);
         if (header!=null) {
             String[] authElements = header.split(" " );
-            if (authElements.length== 2 && "Brear".equals(authElements[0])) {
+            if (authElements.length== 2 && "Bearer".equals(authElements[0])) {
                 try {
                     SecurityContextHolder.getContext().setAuthentication(userAuthProvider.validateToken(authElements[1]));
                 }catch (RuntimeException e) {

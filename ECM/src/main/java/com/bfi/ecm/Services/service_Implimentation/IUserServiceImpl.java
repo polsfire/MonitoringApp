@@ -55,14 +55,17 @@ public class IUserServiceImpl implements IUserService {
 
     @Override
     public UserDto login(CredentialsDto credentialsDto) {
-       User user= userRepository.findByEmail(credentialsDto.email()).
-                orElseThrow(()->new AppException("Unknow user ", HttpStatus.NOT_FOUND));
-       if(passwordEncoder.matches(CharBuffer.wrap(credentialsDto.password())
-               ,user.getPassword())) {
-            return  userMapper.toUserDto(user);
-       }
-       throw  new AppException("Invalid password",HttpStatus.BAD_REQUEST);
+        User user = userRepository.findByEmail(credentialsDto.email())
+                .orElseThrow(() -> new AppException("User not found", HttpStatus.NOT_FOUND));
+
+        if (passwordEncoder.matches(CharBuffer.wrap(credentialsDto.password()), user.getPassword())) {
+            return userMapper.toUserDto(user);
+        }
+
+        throw new AppException("Invalid password", HttpStatus.UNAUTHORIZED);
     }
+
+
 
     @Override
     public UserDto register(SignupDto signupDto) {

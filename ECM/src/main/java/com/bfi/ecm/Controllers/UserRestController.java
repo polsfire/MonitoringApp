@@ -23,22 +23,24 @@ public class UserRestController {
     private final IUserService userService;
 private final UserMapper userMapper;
     private final UserAuthProvider userAuthProvider;
-    @Operation(description = "Login User")
-    @PostMapping("/login")
-    public ResponseEntity<UserDto> login(@RequestBody CredentialsDto credentialsDto) {
-        UserDto user= userService.login(credentialsDto);
-        user.setToken(userAuthProvider.createToken(user));
-        System.out.println("Logged in user: " + user);
-
-        return ResponseEntity.ok(user);
-    }
     @Operation(description = "Add User")
     @PostMapping("/add")
     public ResponseEntity<UserDto> addUser(@RequestBody SignupDto signupDto) {
         UserDto user= userService.register(signupDto);
-        user.setToken(userAuthProvider.createToken(user));
+        System.out.println("activated");
+        //user.setToken(userAuthProvider.createToken(user));
         return  ResponseEntity.created(URI.create("/users/"+user.getId())).body(user);
     }
+    @Operation(description = "Login User")
+    @PostMapping("/login")
+    public ResponseEntity<UserDto> login(@RequestBody CredentialsDto credentialsDto) {
+        UserDto user= userService.login(credentialsDto);
+       // user.setToken(userAuthProvider.createToken(user));
+        System.out.println("Logged in user: " + user);
+
+        return ResponseEntity.ok(user);
+    }
+
 
     @Operation(description = "Retrieve all Users")
     @GetMapping("/all")

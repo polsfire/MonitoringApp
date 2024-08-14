@@ -1,82 +1,102 @@
-/* General body styling for better readability */
+/* General styling */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f4f4f4;
-  }
-  
-  /* Style for each parameter block */
-  div {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 8px;
-  }
-  
-  /* Style for headings */
-  h3 {
-    color: #333333;
-    font-size: 1.2em;
-    margin-top: 0;
-  }
-  
-  /* Style for unordered list */
-  ul {
-    padding-left: 20px;
-    list-style-type: none;
-  }
-  
-  /* Style for list items */
-  li {
-    margin-bottom: 10px;
-  }
-  
-  /* Style for input fields */
-  input[type="text"] {
-    padding: 8px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    width: calc(100% - 20px);
-    box-sizing: border-box;
-  }
-  
-  /* Style for Add Value button */
-  button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #ffffff;
-    font-size: 1em;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Style for Send button */
-  button:last-of-type {
-    background-color: #28a745;
-    margin-top: 20px;
-  }
-  
-  button:last-of-type:hover {
-    background-color: #218838;
-  }
-  
-  /* Style for concatenated message section */
- 
-  
-  h2 {
-    color: #333333;
-    font-size: 1.5em;
-  }
-  
-  p {
-    color: #555555;
-    font-size: 1em;
-  }
-  
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  margin: 20px;
+}
+
+/* Container for the entire component */
+.parameter-section {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+h1, h2, h3 {
+  font-weight: 500;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 30px;
+  color: #007bff;
+}
+
+h3 {
+  margin-top: 20px;
+}
+
+/* Unordered list styling */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* Input styling */
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+/* Button styling */
+button {
+  padding: 8px 16px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.send-button {
+  background-color: #28a745;
+}
+
+.send-button:hover {
+  background-color: #218838;
+}
+
+/* Message section styling */
+.message-section {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #e9ecef;
+  border-radius: 8px;
+}
+
+/* Table styling for results */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}

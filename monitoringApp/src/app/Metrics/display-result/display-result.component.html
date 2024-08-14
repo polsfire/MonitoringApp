@@ -1,19 +1,19 @@
-<div *ngFor="let param of parameterValues | keyvalue">
-    <h3>{{param.key}}</h3>
-    <ul>
-      <li *ngFor="let value of param.value; let i = index">
-        <input [(ngModel)]="parameterValues[param.key][i]" />
-      </li>
-    </ul>
-    <button (click)="addValue(param.key)">Add Value</button>
-    <button *ngIf="param.key === 'errors'" (click)="addErrorValue(param.key)">Type</button>
-  </div>
-  
-  <button (click)="sendParameterValues()">Send</button>
-  
-  <!-- Section to display the concatenated message -->
-  <div *ngIf="concatenatedMessage">
-    <h2>Concatenated Result</h2>
-    <p>{{ concatenatedMessage }}</p>
-  </div>
-  
+<!-- display-result.component.html -->
+<div class="parameter-section" *ngFor="let param of parameterValues | keyvalue">
+  <h3>{{param.key}}</h3>
+  <ul>
+<li *ngFor="let value of param.value; let i = index; trackBy: trackByIndex">
+  <input [(ngModel)]="parameterValues[param.key][i]" />
+</li>
+
+  </ul>
+  <button (click)="addValue(param.key)">Add Value</button>
+  <button *ngIf="param.key === 'errors'" (click)="addErrorValue(param.key)">Add Error Type</button>
+</div>
+
+<button class="send-button" (click)="sendParameterValues()">Send</button>
+
+<div class="message-section" *ngIf="concatenatedMessage">
+  <h2>Concatenated Result</h2>
+  <p>{{ concatenatedMessage }}</p>
+</div>

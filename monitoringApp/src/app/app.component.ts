@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'monitoringApp';
+  isAuthenticated: boolean = false; // This flag will determine what to display
+
+  // Method to handle successful login
+  onLoginSuccess(): void {
+    this.isAuthenticated = true;
+  }
 }

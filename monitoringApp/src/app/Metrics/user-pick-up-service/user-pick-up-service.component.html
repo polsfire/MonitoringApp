@@ -1,8 +1,8 @@
-<div>
-    <select [(ngModel)]="selectedParameter">
-     <option value="" disabled selected hidden>Pick a parameter</option>
-     <option *ngFor="let param of parameters" [value]="param">{{ param }}</option>
-   </select>
-   <button (click)="onParameterSelect()">Confirm</button>
- </div>
- 
+<!-- user-pick-up-service.component.html -->
+<div class="user-pickup-section">
+   <select [(ngModel)]="selectedParameter">
+    <option value="" disabled selected hidden>Pick a parameter</option>
+    <option *ngFor="let param of parameters" [value]="param">{{ param }}</option>
+  </select>
+  <button (click)="onParameterSelect()">Confirm</button>
+</div>

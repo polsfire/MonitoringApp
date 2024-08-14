@@ -12,18 +12,19 @@ export class AxiosService {
     axios.defaults.headers.post["Content-type"]="application/json";
 
   }
+  
   request(method:string,url:string,data:any):Promise<any>{
-    /*let headers = {};
+    let headers = {};
 
     if (this.getAuthToken!=null) {
-      headers={"Authorisation":"Bearer"+this.getAuthToken()}
-    }*/
+      headers={"Authorization":"Bearer"+this.getAuthToken()}
+    }  
     return axios(
       {
         method:method,
         url:url,
         data:data,
-       // headers:headers
+       headers:headers
       }
     )
   }

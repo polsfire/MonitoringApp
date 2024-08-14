@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginDto } from '../Models/Logindto';
-import { Observable } from 'rxjs';
+import { Observable, from, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { SignupDto } from '../Models/Signupdto';
 import { AxiosService } from './axios.service';
-import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,10 @@ export class AuthentificationService {
 
   constructor(private axiosService: AxiosService) { }
 
+  clearAuthToken(): void {
+    this.axiosService.setAuthToken(null);
+  }
+
   login(loginRequest: LoginDto): Observable<any> {
     return from(
       this.axiosService.request('POST', `${this.baseUrl}/users/login`, loginRequest).then(response => {
@@ -23,27 +27,33 @@ export class AuthentificationService {
         }
         return response.data;
       })
+    ).pipe(
+      catchError(error => {
+        console.error('Login error:', error);
+        let errorMessage = 'An unknown error occurred. Please try again later.';
+        if (error.response && error.response.data && error.response.data.message) {
+          errorMessage = error.response.data.message;
+        }
+        return throwError(() => new Error(errorMessage));
+      })
     );
   }
+
   signup(signupRequest: SignupDto): Observable<any> {
     return from(
       this.axiosService.request('POST', `${this.baseUrl}/users/add`, signupRequest).then(response => {
         this.axiosService.setAuthToken(response.data.token); // Save the token if present
-
+        return response.data;
+      })
+    ).pipe(
+      catchError(error => {
+        console.error('Signup error:', error);
+        let errorMessage = 'An unknown error occurred. Please try again later.';
+        if (error.response && error.response.data && error.response.data.message) {
+          errorMessage = error.response.data.message;
+        }
+        return throwError(() => new Error(errorMessage));
       })
     );
   }
-  //2 methods to manage the auth token storage
-  /*
-  getAuthToken():string | null   {
-    return window.localStorage.getItem("auth_token");
-  }
-  //add the token in the local storage
-  setAuthToken(token :string | null):void   {
-    if (token!=null) 
-      window.localStorage.setItem("auth_token",token);
-    else 
-    window.localStorage.removeItem("auth_token");
-
-  }*/
 }

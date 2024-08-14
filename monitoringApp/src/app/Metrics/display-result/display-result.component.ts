@@ -58,7 +58,10 @@ export class DisplayResultComponent {
   }
 
 
-
+  trackByIndex(index: number, item: any): number {
+    return index;
+  }
+  
 
     addValue(parameter: string) {
       if (parameter in this.parameterValues) {

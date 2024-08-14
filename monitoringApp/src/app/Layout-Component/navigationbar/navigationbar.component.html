@@ -1,14 +1,13 @@
 <nav class="navbar">
-    <ul class="nav-links">
-        
-        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-        <li> <a routerLink="/about" routerLinkActive="active">About</a></li>
-        <li> <a routerLink="/services" routerLinkActive="active">Services</a></li>
-        <li> <a routerLink="/contact" routerLinkActive="active">Contact</a></li>
-      <!-- Add more navigation links here -->
-    </ul>
-    <div class="logo">
-      <img src="https://bfigroupe.com/wp-content/uploads/2021/02/bfi_logo_2021.svg" alt="BFI Logo">
-    </div>
-  </nav>
-  
+  <ul class="nav-links">
+    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+    <li><a routerLink="/services" routerLinkActive="active">Services</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+    <!-- Add more navigation links here -->
+  </ul>
+  <div class="logo">
+    <img src="https://bfigroupe.com/wp-content/uploads/2021/02/bfi_logo_2021.svg" alt="BFI Logo">
+  </div>
+  <button class="logout-button" (click)="logout()">Logout</button>
+</nav>

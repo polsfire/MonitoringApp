@@ -5,12 +5,11 @@ import { LinkComponent } from './Metrics/link/link.component';
 import { ContentComponent } from './log_auth/content/content.component';
 
 const routes: Routes = [
-
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
-  { path: 'services', component: LinkComponent },
-  { path: 'about', component:ContentComponent  },
-  { path: '', redirectTo: '/parameters', pathMatch: 'full' },
+  { path: '', component: ContentComponent }, // Display ContentComponent at the root URL
+   { path: 'services', component: LinkComponent },
+  { path: 'about',   },
   { path: 'parameters', component: DisplayResultComponent },
+  { path: '**', redirectTo: '' } // Redirect all undefined paths to root
 ];
 
 @NgModule({

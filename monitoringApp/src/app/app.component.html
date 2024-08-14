@@ -1,3 +1,8 @@
-<app-navigationbar></app-navigationbar>
-<router-outlet></router-outlet>
+<!-- app.component.html -->
+<app-content *ngIf="!isAuthenticated" (loginSuccess)="onLoginSuccess()"></app-content>
+<div *ngIf="isAuthenticated">
+  <app-navigationbar></app-navigationbar>
+  <router-outlet></router-outlet>
+</div>
+
  

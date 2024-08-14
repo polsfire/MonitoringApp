@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../../services/authentification.service';
 import { LoginDto } from '../../Models/Logindto';
@@ -10,6 +10,7 @@ import { SignupDto } from '../../Models/Signupdto';
   styleUrl: './content.component.css'
 })
 export class ContentComponent {
+  @Output() loginSuccess = new EventEmitter<void>();
 
   constructor(
     private router: Router,
@@ -26,6 +27,7 @@ export class ContentComponent {
       .subscribe({
         next: () => {
           console.log('Login successful, navigating to home.');
+          this.loginSuccess.emit(); // Emit the event to notify the AppComponent
           this.router.navigate(['/']);
         },
         error: err => {
@@ -60,7 +62,8 @@ export class ContentComponent {
 
     this.loginrequest.signup(input).subscribe({
       next: () => {
-        this.router.navigate(['/']); // Navigate to login or home after successful registration
+        this.loginSuccess.emit(); // Emit the event to notify the AppComponent
+        this.router.navigate(['/']);
       },
       error: err => {
         console.error('Error:', err); // Log the error for debugging
